@@ -13,4 +13,10 @@ public class MainController {
         return "home";
     }
 
+    @GetMapping("/signUp.html")
+    public String signUp(Model model) {
+        model.addAttribute("title", "JDM");
+        return "signUp";
+    }
+
 }
