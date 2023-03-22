@@ -1,0 +1,22 @@
+package com.CarSellingService.controller;
+
+import com.CarSellingService.entity.User;
+import com.CarSellingService.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AuthController {
+
+    @Autowired
+    private UserRepository userRepository;
+    @GetMapping("/signUp.html")
+    public String signUp(Model model) {
+        Iterable<User> users = userRepository.findAll();
+        model.addAttribute("title", "JDM");
+        return "signUp";
+    }
+
+}
