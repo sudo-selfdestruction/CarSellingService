@@ -1,4 +1,4 @@
-package com.CarSellingService.controllers;
+package com.CarSellingService.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +13,5 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/signUp.html")
-    public String signUp(Model model) {
-        model.addAttribute("title", "JDM");
-        return "signUp";
-    }
 
 }
