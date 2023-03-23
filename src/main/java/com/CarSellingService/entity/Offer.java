@@ -9,11 +9,15 @@ import jakarta.persistence.Id;
 public class Offer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String carName;
     private String description;
+
+    public Offer() {
+
+    }
 
     public String getCarName() {
         return carName;
