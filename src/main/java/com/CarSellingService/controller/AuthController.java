@@ -15,7 +15,7 @@ public class AuthController {
     @GetMapping("/signUp.html")
     public String signUp(Model model) {
         Iterable<User> users = userRepository.findAll();
-        model.addAttribute("title", "JDM");
+        model.addAttribute("title", "Sign up to JDM");
         return "signUp";
     }
 
