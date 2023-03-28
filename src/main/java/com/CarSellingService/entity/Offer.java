@@ -11,7 +11,6 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String carName;
     private String description;
 
