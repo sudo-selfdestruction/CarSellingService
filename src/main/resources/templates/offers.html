@@ -12,10 +12,10 @@
     <header th:insert="blocks/header :: header"></header>
     <h1 class="text-center">All current Offers:</h1>
 
-    <tr th:each="el : ${offers}">
+    <div th:each="el : ${offers}">
         <td><span style="margin-left: 150px" th:text="${el.carName}"></span></td>
         <td><span th:text="${el.description}"> </span></td>
-    </tr>
+    </div>
 
 </body>
 </html>
