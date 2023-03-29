@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 //    @Size(min=2, message = "Не меньше 5 знаков")
     private String username;
