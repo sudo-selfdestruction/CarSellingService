@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Offer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String carName;
     private String description;
