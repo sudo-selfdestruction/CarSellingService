@@ -1,26 +1,30 @@
 package com.CarSellingService.controller;
 
-import org.springframework.stereotype.Controller;
+import com.CarSellingService.entity.Offer;
+import com.CarSellingService.service.OfferService;
+import lombok.AllArgsConstructor;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.Optional;
+
+@RestController
+@AllArgsConstructor
 public class MainController {
-
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("title", "JDM");
-        return "home";
+    private OfferService offerService;
+    @GetMapping("/Offer")
+    public Iterable<Offer> getAllOffers(Model model) {
+        return offerService.getOffers();
     }
 
-    @GetMapping("/user")
-    public String user() {
-        return "home";
-    }
-    @GetMapping("/admin")
-    public String admin() {
-        return "home";
+    @GetMapping("/Offer/{id}")
+    public Optional<Offer> getOfferByID(@PathVariable("id") Offer offer) {
+        return offerService.getOfferByID(offer);
     }
 
+    @PostMapping("/Offer")
+    public Offer saveOffer(@RequestBody Offer offer) {
+        return offerService.saveOffer(offer);
+    }
 
 }
