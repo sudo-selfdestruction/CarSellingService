@@ -35,13 +35,13 @@ public class SecurityConfig {
 //             Доступ только для пользователей с ролью Администратор
 //             .requestMatchers("/admin/**").hasRole("ADMIN")
              //Доступ разрешен всем пользователей
-             .requestMatchers("/", "/resources/**").permitAll()
+             .requestMatchers("/").permitAll()
              //Все остальные страницы требуют аутентификации
 //           //.anyRequest().authenticated()
              .and()
              //Настройка для входа в систему
              .formLogin()
-             .loginPage("/signUp")
+//             .loginPage("/signUp")
              //Перенарпавление на главную страницу после успешного входа
              .defaultSuccessUrl("/")
              .permitAll()
