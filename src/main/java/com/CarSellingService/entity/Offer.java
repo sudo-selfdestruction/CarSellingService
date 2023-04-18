@@ -1,7 +1,9 @@
 package com.CarSellingService.entity;
 
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Offer {
@@ -11,8 +13,6 @@ public class Offer {
     private Long id;
     private String carName;
     private String description;
-    @OneToMany
-    private List<User> user;
 
     public Offer() {
 
