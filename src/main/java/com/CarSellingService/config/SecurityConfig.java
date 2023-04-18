@@ -30,14 +30,10 @@ public class SecurityConfig {
              .csrf()
              .disable()
              .authorizeRequests()
-             //Доступ только для не зарегистрированных пользователей
              .requestMatchers("signUp").not().fullyAuthenticated()
-//             Доступ только для пользователей с ролью Администратор
-//             .requestMatchers("/admin/**").hasRole("ADMIN")
-             //Доступ разрешен всем пользователей
+             .requestMatchers("/admin/**").hasRole("ROLE_ADMIN")
              .requestMatchers("/").permitAll()
-             //Все остальные страницы требуют аутентификации
-//           //.anyRequest().authenticated()
+             .requestMatchers("/Offer/create").authenticated()
              .and()
              //Настройка для входа в систему
              .formLogin()
