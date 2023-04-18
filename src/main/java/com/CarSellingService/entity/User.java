@@ -1,11 +1,11 @@
 package com.CarSellingService.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,14 +13,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-//    @Size(min=2, message = "Не меньше 5 знаков")
     private String username;
-//    @Size(min=2, message = "Не меньше 5 знаков")
     private String password;
     @Transient
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Roles> roles;
+    @OneToMany
+    private List<Offer> offer;
 
 
     public User() {
