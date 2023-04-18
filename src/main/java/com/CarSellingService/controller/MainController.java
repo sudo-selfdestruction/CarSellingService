@@ -22,7 +22,7 @@ public class MainController {
         return offerService.getOfferByID(offer);
     }
 
-    @PostMapping("/Offer")
+    @PostMapping("/Offer/create")
     public Offer saveOffer(@RequestBody Offer offer) {
         return offerService.saveOffer(offer);
     }
