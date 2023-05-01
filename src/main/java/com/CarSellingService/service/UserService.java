@@ -2,23 +2,19 @@ package com.CarSellingService.service;
 
 import com.CarSellingService.entity.Roles;
 import com.CarSellingService.entity.User;
-import com.CarSellingService.repository.RoleRepository;
 import com.CarSellingService.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
@@ -28,16 +24,6 @@ public class UserService implements UserDetailsService {
 
     public UserService(UserRepository repository) {
         this.userRepository = repository;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return user;
     }
 
     public User findUserById(Long userId) {
@@ -55,7 +41,9 @@ public class UserService implements UserDetailsService {
         if (userFromDB != null) {
             return false;
         }
-        user.setRoles(Collections.singleton(new Roles(1L, "ROLE_USER")));
+        List<Roles> roles = new ArrayList<>();
+        roles.add(new Roles(1L, "USER"));
+        user.setRoles(roles);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -68,7 +56,11 @@ public class UserService implements UserDetailsService {
         }
         return false;
     }
-    public List<User> usergetList(Long idMin) {
+    public User findUserByUsername(User userForm) {
+        return userRepository.findByUsername(userForm.getUsername());
+    }
+
+    public List<User> useregtList(Long idMin) {
         return entityManager.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
     }
