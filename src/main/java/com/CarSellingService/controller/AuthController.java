@@ -4,6 +4,7 @@ import com.CarSellingService.entity.User;
 import com.CarSellingService.repository.UserRepository;
 import com.CarSellingService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,7 @@ public class AuthController {
     private Logger logger = Logger.getLogger(AuthController.class.getName());
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private UserService userService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/signUp")
     public User addUser(@RequestBody User userForm) {
