@@ -1,2 +1,3 @@
 # CarSellingService
-University task on Java + Spring
+RESTful API 
+http://localhost:8080/swagger-ui/index.html
