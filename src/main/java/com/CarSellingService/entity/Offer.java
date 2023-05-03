@@ -11,19 +11,20 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String carName;
+    private String carBrand;
+    private String carModel;
+    private Float engineVolume;
+    private Integer horsePower;
+    private String color;
     private String description;
+    private Long userId;
 
-    public Offer() {
-
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getDescription() {
@@ -40,6 +41,46 @@ public class Offer {
 
     public Long getId() {
         return id;
+    }
+
+    public Integer getHorsePower() {
+        return horsePower;
+    }
+
+    public void setHorsePower(Integer horsePower) {
+        this.horsePower = horsePower;
+    }
+
+    public Float getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(Float engineVolume) {
+        this.engineVolume = engineVolume;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 }
