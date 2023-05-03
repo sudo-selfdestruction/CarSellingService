@@ -20,7 +20,7 @@ public class SecurityConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    CustomUserDetailService customUserDetailService;
+    private CustomUserDetailService customUserDetailService;
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -28,8 +28,8 @@ public class SecurityConfig {
              .disable()
              .authorizeRequests()
              .requestMatchers("/signUp").not().fullyAuthenticated()
-             .requestMatchers("/logIn").permitAll()
              .requestMatchers("/admin/**").hasRole("ADMIN")
+             .requestMatchers("/Offer").permitAll()
              .anyRequest().authenticated()
              .and()
              .httpBasic();
