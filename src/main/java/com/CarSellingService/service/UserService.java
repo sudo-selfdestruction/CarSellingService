@@ -6,6 +6,7 @@ import com.CarSellingService.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +64,10 @@ public class UserService {
     public List<User> useregtList(Long idMin) {
         return entityManager.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
+    }
+
+    public User getUserByLogin() {
+        return userRepository.getUserByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 }
 
