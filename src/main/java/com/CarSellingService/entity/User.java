@@ -15,8 +15,6 @@ public class User {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Roles> roles;
-    @OneToMany
-    private List<Offer> offer;
 
     public User() {
     }
