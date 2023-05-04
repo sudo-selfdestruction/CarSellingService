@@ -16,7 +16,6 @@ public class OfferService {
     public Iterable<Offer> getOffers() {
         return offerRepository.findAll();
     }
-
     public Optional<Offer> getOfferByID(Offer offer) {
         return offerRepository.findById(offer.getId());
     }
@@ -25,5 +24,22 @@ public class OfferService {
         User user = userService.getUserByLogin();
         offer.setUserId(user.getId());
         return offerRepository.save(offer);
+    }
+
+    public Offer updateOffer(Offer offer, Offer offerRequest) {
+        User user = userService.getUserByLogin();
+        if (user.getId().equals(offer.getUserId())) {
+            offerRequest.setId(offer.getId());
+            offerRequest.setUserId(offer.getUserId());
+            return offerRepository.save(offerRequest);
+        }
+        return null;
+    }
+
+    public void deleteOffer(Offer offer) {
+        User user = userService.getUserByLogin();
+        if(user.getId().equals(offer.getUserId())) {
+            offerRepository.delete(offer);
+        }
     }
 }
