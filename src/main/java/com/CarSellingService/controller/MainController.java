@@ -27,4 +27,14 @@ public class MainController {
         return offerService.saveOffer(offer);
     }
 
+    @PostMapping("/Offer/{id}/update")
+    public Offer updateOffer(@PathVariable("id") Offer offer, @RequestBody Offer offerRequest) {
+        return offerService.updateOffer(offer, offerRequest);
+    }
+
+    @PostMapping("/Offer/{id}/delete")
+    public void deleteOffer(@PathVariable("id") Offer offer) {
+         offerService.deleteOffer(offer);
+    }
+
 }
