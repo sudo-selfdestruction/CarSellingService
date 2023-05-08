@@ -4,6 +4,7 @@ import com.CarSellingService.entity.Offer;
 import com.CarSellingService.entity.User;
 import com.CarSellingService.repository.OfferRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,7 +12,9 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class OfferService {
+    @Autowired
     private OfferRepository offerRepository;
+    @Autowired
     private UserService userService;
     public Iterable<Offer> getOffers() {
         return offerRepository.findAll();
