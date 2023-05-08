@@ -3,6 +3,7 @@ package com.CarSellingService.controller;
 import com.CarSellingService.entity.Offer;
 import com.CarSellingService.service.OfferService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 public class MainController {
+    @Autowired
     private OfferService offerService;
     @GetMapping("/Offer")
     public Iterable<Offer> getAllOffers(Model model) {
