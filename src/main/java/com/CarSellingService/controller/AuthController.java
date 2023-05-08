@@ -2,7 +2,6 @@ package com.CarSellingService.controller;
 
 import com.CarSellingService.entity.User;
 import com.CarSellingService.service.UserService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
