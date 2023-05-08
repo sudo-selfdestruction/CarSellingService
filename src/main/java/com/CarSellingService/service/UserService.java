@@ -23,10 +23,6 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-    public UserService(UserRepository repository) {
-        this.userRepository = repository;
-    }
-
     public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
         return userFromDb.orElse(new User());

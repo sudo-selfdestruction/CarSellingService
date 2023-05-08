@@ -1,9 +1,7 @@
 package com.CarSellingService.controller;
 
 import com.CarSellingService.entity.User;
-import com.CarSellingService.repository.UserRepository;
 import com.CarSellingService.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +13,11 @@ import java.util.logging.Logger;
 @RestController
 public class AuthController {
     private Logger logger = Logger.getLogger(AuthController.class.getName());
-    @Autowired
-    private UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    private UserService userService = new UserService();
 
     @PostMapping("/signUp")
     public User addUser(@RequestBody User userForm) {
-        UserService userService = new UserService(userRepository);
+
 
         if (!userService.saveUser(userForm)) {
             logger.info("Пользователь с таким именем уже существует");
